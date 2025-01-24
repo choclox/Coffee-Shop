@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex h-screen">
+        <div class="w-1/2">
+            <img src="{% static 'users\cafe-capuchino.jpg' %}" alt="capuchino" class="h-full w-full object-cover">
+        </div>
+        <div class="w-1/2 flex items-center justify-center">
+            <div class="container mx-auto px-4">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

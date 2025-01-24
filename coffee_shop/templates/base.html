@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-stone-400">
+<header class="bg-stone-600">
+    <div class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a class="block text-teal-600" href="#" style="position: absolute; top: 0; left: 0; margin: 16px;">
+            <span class="sr-only">Home</span>
+            <img src="{% static 'users/logo.png' %}" alt="Coffee Shop Logo" class="h-20 w-auto bg-white p-1 rounded-full">
+        </a>
+        {% if "user.is_authenticaded"%}
+        <div class="hidden md:relative md:block" style="position: absolute; top: 0; right: 0; margin: 16px;">
+            <div class="flex items-center gap-4">
+                <h1 class="text-2xl font-bold text-stone-900 sm:text-3xl">
+                    Hola, {{ user.username }}
+                </h1>
+                <button
+                  type="button"
+                  class="overflow-hidden rounded-full border border-gray-300 shadow-inner"
+                >
+                  <span class="sr-only">Toggle dashboard menu</span>
+                  <img
+                    src="{% static 'users/avatar.webp' %}"
+                    alt=""
+                    class="h-10 w-10 object-cover"
+                  />
+                </button>
+            </div>
+        </div>
+        {% else %}
+        <div class="flex items-center gap-4" style="position: absolute; top: 0; right: 0; margin: 16px;">
+            <a
+                class="block rounded-md bg-stone-800 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-900"
+                href="{% url 'login' %}"
+            >
+                Login
+            </a>
+            <a
+                class="block rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-stone-800 transition hover:text-stone-700/75"
+                href="{% url 'sign_up' %}"
+            >
+                Register
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</header>
+<div class="container mx-auto px-4 w-full">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
