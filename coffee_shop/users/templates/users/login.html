@@ -3,8 +3,8 @@
 
 {% block content %}
 <div class="flex justify-center items-center min-h-screen">
-    <div class="w-full max-w-md">
-        <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+    <div class="w-full max-w-md border-2 border-stone-800 rounded-lg p-6 bg-white">
+        <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
             Iniciar sesion
         </h1>
         <form action="" method="post">
@@ -15,12 +15,12 @@
                 type="submit">
                 Login
             </button>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between mt-4">
                 <p class="text-sm text-gray-500">
                   No tienes cuenta?
                   <a class="underline" href="{% url "sign_up"%}">Registrate</a>
                 </p>
-              </div>
+            </div>
         </form>
     </div>
 </div>

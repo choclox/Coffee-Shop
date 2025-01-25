@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="flex justify-center items-center min-h-screen">
-    <div class="w-full max-w-md">
+    <div class="w-full max-w-md border-2 border-stone-800 rounded-lg p-6 bg-white">
         <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
             Registrate
         </h1>
@@ -15,6 +15,12 @@
                 type="submit">
                 Registrarse
             </button>
+            <div class="flex items-center justify-between">
+                <p class="text-sm text-gray-500">
+                  Ya tienes cuenta?
+                  <a class="underline" href="{% url "login"%}">Ingresa</a>
+                </p>
+            </div>
         </form>
     </div>
 </div>
