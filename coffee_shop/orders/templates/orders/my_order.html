@@ -4,13 +4,33 @@
 <h1 class="text-3xl font-bold mb-4 text-stone-900">Mis ordenes</h1>
 <h2 class="text-2xl font-semibold mb-2 text-stone-800">Activas</h2>
 <div class="flex flex-wrap space-x-4" style="position: relative; top: 10px;">
-    {% for order in user.order_set.all%}
-        {% if order.is_active %}
-            <div class="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white mb-4">
-                <div class="font-bold text-xl mb-2 text-stone-900">
-                    ID del pedido: {{ order.id }}
-                </div>
-                <p class="text-stone-700 text-base mb-4">Fecha del pedido: {{ order.order_date|date:"F j, Y" }}</p>
+    {% for order in active_orders%}
+        <div class="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white mb-4">
+            <div class="font-bold text-xl mb-2 text-stone-900">
+                ID del pedido: {{ order.id }}
+            </div>
+            <p class="text-stone-700 text-base mb-4">Fecha: {{ order.order_date|date:"F j, Y" }}</p>
+            <ul class="list-disc pl-5 text-stone-700">
+                {% for product_order in order.orderitem_set.all %}
+                    <li class="flex justify-between">
+                        <span>{{ product_order.product.name }}</span>
+                        <span>{{ product_order.quantity }} x ${{ product_order.product.price }}</span>
+                    </li>
+                {% empty %}
+                <li>No hay productos en esta orden</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% empty %}
+    <p class="text-stone-700">No orders found.</p>
+    {% endfor %}
+</div>       
+<h2 class="text-2xl font-semibold mb-2 text-stone-800">Inactivas</h2>
+<div class="flex flex-wrap space-x-4" style="position: relative; top: 10px;">
+    {% for order in inactive_orders%}
+        <div class="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white mb-4">
+            <div class="font-bold text-xl mb-2 text-stone-900">ID del pedido: {{ order.id }}</div>
+                <p class="text-stone-700 text-base mb-4">Fecha: {{ order.order_date|date:"F j, Y" }}</p>
                 <ul class="list-disc pl-5 text-stone-700">
                     {% for product_order in order.orderitem_set.all %}
                         <li class="flex justify-between">
@@ -21,31 +41,7 @@
                     <li>No hay productos en esta orden</li>
                     {% endfor %}
                 </ul>
-            </div>
-        {% endif %}
-    {% empty %}
-    <p class="text-stone-700">No orders found.</p>
-    {% endfor %}
-</div>       
-<h2 class="text-2xl font-semibold mb-2 text-stone-800">Inactivas</h2>
-<div class="flex flex-wrap space-x-4" style="position: relative; top: 10px;">
-    {% for order in user.order_set.all%}
-        {% if not order.is_active %}
-            <div class="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white mb-4">
-                <div class="font-bold text-xl mb-2 text-stone-900">ID del pedido: {{ order.id }}</div>
-                    <p class="text-stone-700 text-base mb-4">Fecha del pedido: {{ order.order_date|date:"F j, Y" }}</p>
-                    <ul class="list-disc pl-5 text-stone-700">
-                        {% for product_order in order.orderitem_set.all %}
-                            <li class="flex justify-between">
-                                <span>{{ product_order.product.name }}</span>
-                                <span>{{ product_order.quantity }} x ${{ product_order.product.price }}</span>
-                            </li>
-                        {% empty %}
-                        <li>No hay productos en esta orden</li>
-                        {% endfor %}
-                    </ul>
-            </div>
-        {% endif %}
+        </div>
     {% empty %}
         <p class="text-stone-700">No orders found.</p>
     {% endfor %}

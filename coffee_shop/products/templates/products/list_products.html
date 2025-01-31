@@ -43,7 +43,9 @@
         
           <p class="mt-1.5 text-sm text-stone-700">${{product.price}}</p>
         
-          <form class="mt-4">
+          <form action="{% url 'add-product' %}" class="mt-4" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="product" value="{{product.id}}">
         <button
           class="block w-full rounded bg-stone-800 p-4 text-sm font-medium text-white transition hover:bg-stone-900"
         >
