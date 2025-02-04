@@ -31,6 +31,20 @@
                 class="h-10 w-10 object-cover"
                 />
             </button>
+            <form action="{% url "logout" %}" method="post" class="inline-flex items-center justify-center">
+                {% csrf_token %}
+                <button
+                type="submit"
+                class="overflow-hidden rounded-full border border-gray-300 shadow-inner"
+                >
+                    <span class="sr-only">Logout</span>
+                    <img
+                    src="{% static 'users/logout.jpg' %}"
+                    alt=""
+                    class="h-10 w-10 object-cover"
+                    />
+                </button>
+            </form>
             {% else %}
             <a
                 class="block rounded-md bg-stone-800 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-900"
