@@ -11,7 +11,7 @@
 <body class="bg-stone-400">
 <header class="bg-stone-600">
     <div class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a class="block text-teal-600" href="{% url 'list_products'%}" style="position: absolute; top: 0; left: 0; margin: 16px;">
+        <a class="block text-teal-600" href="{% url 'list_product'%}" style="position: absolute; top: 0; left: 0; margin: 16px;">
             <span class="sr-only">Home</span>
             <img src="{% static 'users/logo.png' %}" alt="Coffee Shop Logo" class="h-20 w-auto bg-white p-1 rounded-full">
         </a>
@@ -54,7 +54,7 @@
             </a>
             <a
                 class="block rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-stone-800 transition hover:text-stone-700/75"
-                href="{% url 'sign_up' %}"
+                href="{% url 'register' %}"
             >
                 Register
             </a>

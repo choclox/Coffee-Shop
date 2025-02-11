@@ -28,7 +28,12 @@ SECRET_KEY = "django-insecure-tgxgxbu2_l0v#tmiw9&s813593n(*+k5fz)-^45hwsuq!he(s9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost', 
+    '.elasticbeanstalk.com',  # Permite cualquier subdominio de AWS Beanstalk
+    '172.31.45.9',  # IP interna del servidor (cámbiala si es diferente)
+]
 
 
 # Application definition
@@ -122,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -132,8 +138,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
 
-LOGIN_REDIRECT_URL = "list_products"
-LOGOUT_REDIRECT_URL = "list_products"
+LOGIN_REDIRECT_URL = "list_product"
+LOGOUT_REDIRECT_URL = "list_product"
 LOGIN_URL = "login"
 
 REST_FRAMEWORK = {

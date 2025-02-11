@@ -43,7 +43,7 @@
         
           <p class="mt-1.5 text-sm text-stone-700">${{product.price}}</p>
         
-          <form action="{% url 'add-product' %}" class="mt-4" method="post">
+          <form action="{% url 'add_product' %}" class="mt-4" method="post">
           {% csrf_token %}
           <input type="hidden" name="product" value="{{product.id}}">
         <button
